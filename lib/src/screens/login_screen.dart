@@ -5,9 +5,9 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
-  LoginBloc loginBloc = new LoginBloc(count: 0, count2: 0);
+  final LoginBloc loginBloc = new LoginBloc(count: 0, count2: 0);
 
-  TextEditingController controller = new TextEditingController();
+  final TextEditingController controller = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,27 +23,27 @@ class MyHomePage extends StatelessWidget {
               'You have pushed the button this many times:',
             ),
             StreamBuilder(
-              stream: loginBloc.countStreem,
+              stream: this.loginBloc.countStreem,
               builder: (context, snapshot) => Text(
                 '${snapshot.data}',
                 style: Theme.of(context).textTheme.headline4,
               ),
             ),
             StreamBuilder(
-              stream: loginBloc.countStreem2,
+              stream: this.loginBloc.countStreem2,
               builder: (context, snapshot) => Text(
                 '${snapshot.data}',
                 style: Theme.of(context).textTheme.headline4,
               ),
             ),
             StreamBuilder(
-              stream: loginBloc.textStreem,
+              stream: this.loginBloc.textStreem,
               builder: (context, snapshot) {
-                controller.value =
-                    controller.value.copyWith(text: loginBloc.text);
+                this.controller.value =
+                    this.controller.value.copyWith(text: this.loginBloc.text);
                 return TextField(
-                  controller: controller,
-                  onChanged: (value) => loginBloc.setText(value),
+                  controller: this.controller,
+                  onChanged: (value) => this.loginBloc.setText(value),
                 );
               },
             ),
@@ -54,22 +54,22 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
-            onPressed: loginBloc.countPlus,
+            onPressed: this.loginBloc.countPlus,
             tooltip: 'Flus',
             child: Icon(Icons.add),
           ),
           FloatingActionButton(
-            onPressed: loginBloc.countMinus,
+            onPressed: this.loginBloc.countMinus,
             tooltip: 'Minus',
             child: Icon(Icons.remove),
           ),
           FloatingActionButton(
-            onPressed: loginBloc.countPlus2,
+            onPressed: this.loginBloc.countPlus2,
             tooltip: 'Flus',
             child: Icon(Icons.add),
           ),
           FloatingActionButton(
-            onPressed: loginBloc.countMinus2,
+            onPressed: this.loginBloc.countMinus2,
             tooltip: 'Minus',
             child: Icon(Icons.remove),
           )
