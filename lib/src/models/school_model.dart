@@ -1,13 +1,7 @@
-import 'package:equatable/equatable.dart';
+class SchoolModel {
+  String firstname;
+  String fullname;
+  int id;
 
-class SchoolModel extends Equatable {
-  final String name;
-  final int id;
-
-  SchoolModel(this.name, this.id);
-
-  @override
-  List<Object> get props => [this.id, this.name];
-  @override
-  String toString() => 'SchoolModel { id: $id, name: $name }';
+  SchoolModel({this.firstname = '', this.id, this.fullname = ''});
 }
