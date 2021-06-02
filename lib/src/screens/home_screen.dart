@@ -1,3 +1,4 @@
+import 'package:app_asc/src/fragments/home_fragments.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -25,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                 Icons.accessible_outlined,
                 color: Colors.black,
               ),
-              text: 'Danh mục',
+              text: 'Nhắc nhở',
             ),
             Tab(
               iconMargin: EdgeInsets.only(bottom: 0),
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                 Icons.access_alarm_rounded,
                 color: Colors.black,
               ),
-              text: 'Lướt',
+              text: 'Điểm danh',
             ),
             Tab(
               iconMargin: EdgeInsets.only(bottom: 0),
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                 Icons.access_alarm_rounded,
                 color: Colors.black,
               ),
-              text: 'Chát',
+              text: 'Góp ý',
             ),
             Tab(
               iconMargin: EdgeInsets.only(bottom: 0),
@@ -49,13 +50,14 @@ class HomeScreen extends StatelessWidget {
                 Icons.access_alarm_rounded,
                 color: Colors.black,
               ),
-              text: 'Cá nhân',
+              text: 'Tài khoản',
             )
           ],
           labelColor: Colors.blue,
         ),
         body: TabBarView(
           children: <Widget>[
+            HomeFragment(),
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
@@ -70,7 +72,6 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(Icons.access_time_rounded),
             Icon(Icons.youtube_searched_for_sharp),
             Icon(Icons.access_time_rounded),
             Icon(Icons.youtube_searched_for_sharp),
