@@ -42,83 +42,80 @@ class HomeFragment extends StatelessWidget {
         ),
         Expanded(
           child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20),
-              child: Container(
-                height: MediaQuery.of(context).size.height * .80,
-                child: Column(children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: 10,
-                      left: 10,
-                      right: 10,
+            child: Container(
+              height: MediaQuery.of(context).size.height * .80,
+              child: Column(children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(
+                    bottom: 10,
+                    left: 10,
+                    right: 10,
+                  ),
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: BouncingScrollPhysics(),
+                    itemCount: buttons.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 1.1,
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 2,
+                      mainAxisSpacing: 2,
                     ),
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      physics: BouncingScrollPhysics(),
-                      itemCount: buttons.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 1.1,
-                        crossAxisCount: 4,
-                        crossAxisSpacing: 2,
-                        mainAxisSpacing: 2,
-                      ),
-                      itemBuilder: (context, index) => InkWell(
-                        splashColor: Colors.blue.withAlpha(30),
-                        onTap: () {
-                          print('Card tapped.');
-                        },
-                        child: SizedBox(
-                          height: 10,
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  buttons[index].icon,
-                                  color: buttons[index].color,
-                                  size: 40,
+                    itemBuilder: (context, index) => InkWell(
+                      splashColor: Colors.blue.withAlpha(30),
+                      onTap: () {
+                        print('Card tapped.');
+                      },
+                      child: SizedBox(
+                        height: 10,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                buttons[index].icon,
+                                color: buttons[index].color,
+                                size: 40,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(0),
+                                child: Text(
+                                  buttons[index].name,
+                                  textAlign: TextAlign.center,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.all(0),
-                                  child: Text(
-                                    buttons[index].name,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 130,
-                    child: PageView(
-                      controller: PageController(viewportFraction: 0.7),
-                      children: <Widget>[
-                        SlideTitle(
-                          imagePath: 'assets/images/images.jpg',
-                        ),
-                        SlideTitle(
-                          imagePath: 'assets/images/images.jpg',
-                        ),
-                        SlideTitle(
-                          imagePath: 'assets/images/images.jpg',
-                        ),
-                        SlideTitle(
-                          imagePath: 'assets/images/images.jpg',
-                        ),
-                        SlideTitle(
-                          imagePath: 'assets/images/images.jpg',
-                        ),
-                      ],
-                    ),
-                  )
-                ]),
-              ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 130,
+                  child: PageView(
+                    controller: PageController(viewportFraction: 0.8),
+                    children: <Widget>[
+                      SlideTitle(
+                        imagePath: 'assets/images/images.jpg',
+                      ),
+                      SlideTitle(
+                        imagePath: 'assets/images/images.jpg',
+                      ),
+                      SlideTitle(
+                        imagePath: 'assets/images/images.jpg',
+                      ),
+                      SlideTitle(
+                        imagePath: 'assets/images/images.jpg',
+                      ),
+                      SlideTitle(
+                        imagePath: 'assets/images/images.jpg',
+                      ),
+                    ],
+                  ),
+                )
+              ]),
             ),
           ),
         ),

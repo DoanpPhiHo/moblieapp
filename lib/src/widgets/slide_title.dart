@@ -11,21 +11,13 @@ class SlideTitle extends StatelessWidget {
       elevation: 8,
       color: Colors.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(8),
       ),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 5),
-        alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.fill,
-              ),
-            )
-          ],
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Image.asset(
+          imagePath,
+          fit: BoxFit.fill,
         ),
       ),
     );
