@@ -13,10 +13,9 @@ class HomeFragment extends StatelessWidget {
         'Chương trình khung', Icons.calendar_today_outlined, Colors.green[300]),
     new ButtonModel('Thành tích', Icons.brightness_auto, Colors.amber),
     new ButtonModel(
-        'Điểm rèn luyện', Icons.ballot_rounded, Colors.deepPurpleAccent[600]),
+        'Điểm rèn luyện', Icons.ballot_rounded, Colors.amberAccent[700]),
     new ButtonModel('Thống kê điểm danh', Icons.report, Colors.yellow[800]),
-    new ButtonModel(
-        'Khảo sát', Icons.av_timer_sharp, Colors.lightBlueAccent[800]),
+    new ButtonModel('Khảo sát', Icons.av_timer_sharp, Colors.blue[800]),
     new ButtonModel('Quảng cáo', Icons.now_widgets, Colors.red[700]),
     new ButtonModel('Mẫu đơn', Icons.receipt_rounded, Colors.blue[900]),
     new ButtonModel('Đổi mật khẩu', Icons.settings_applications_rounded,
@@ -62,29 +61,35 @@ class HomeFragment extends StatelessWidget {
                       mainAxisSpacing: 2,
                     ),
                     itemBuilder: (context, index) => InkWell(
-                      splashColor: Colors.blue.withAlpha(30),
+                      splashColor: Colors.amber,
                       onTap: () {
                         print('Card tapped.');
                       },
-                      child: SizedBox(
+                      child: Container(
                         height: 10,
+                        color: Color(0xDA3633),
                         child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                buttons[index].icon,
-                                color: buttons[index].color,
-                                size: 40,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(0),
-                                child: Text(
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: buttons[index].color),
+                                  padding: EdgeInsets.all(5),
+                                  child: Icon(
+                                    buttons[index].icon,
+                                    color: Colors.white,
+                                    size: 40,
+                                  ),
+                                ),
+                                Text(
                                   buttons[index].name,
                                   textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
