@@ -1,4 +1,4 @@
-import 'package:app_asc/src/widgets/ThongBaoKhongCoNhacNho.dart';
+import 'package:app_asc/src/widgets/ThongBaoKhongCoData.dart';
 import 'package:flutter/material.dart';
 
 class RemindFragment extends StatelessWidget {
@@ -16,7 +16,9 @@ class RemindFragment extends StatelessWidget {
           onPressed: () {},
         ),
       ),
-      body: ThongBaoKhongCoNhacNho(),
+      body: ThongBaoKhongCoData(
+        text: 'Chưa có thông báo',
+      ),
     );
   }
 }
