@@ -1,3 +1,4 @@
+import 'package:app_asc/src/blocs/home_fragment/home_fragment_bloc.dart';
 import 'package:app_asc/src/models/button_model.dart';
 import 'package:app_asc/src/widgets/card_stack.dart';
 import 'package:app_asc/src/widgets/slide_title.dart';
@@ -28,6 +29,8 @@ class HomeFragment extends StatelessWidget {
     new ButtonModel('Đổi mật khẩu', Icons.settings_applications_rounded,
         Colors.yellow[400]),
   ];
+  final PageController pageController =
+      new PageController(viewportFraction: 0.8, initialPage: 3);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -125,14 +128,19 @@ class HomeFragment extends StatelessWidget {
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * .22,
                           child: PageView.builder(
-                            // itemCount: pages.length,
-                            controller: PageController(
-                                viewportFraction: 0.8, initialPage: 300),
-                            itemBuilder: (context, index) => SlideTitle(
-                              imagePath: pages[index % pages.length],
-                            ),
+                            controller: pageController,
+                            itemBuilder: (context, index) {
+                              print('index:$index');
+                              if (index <= 2) {
+                                pageController
+                                    .jumpToPage(index + pages.length - 1);
+                              }
+                              return SlideTitle(
+                                imagePath: pages[index % pages.length],
+                              );
+                            },
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
