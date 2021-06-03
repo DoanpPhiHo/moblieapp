@@ -1,7 +1,9 @@
-import 'package:app_asc/src/blocs/home_fragment/home_fragment_bloc.dart';
 import 'package:app_asc/src/models/button_model.dart';
+import 'package:app_asc/src/widgets/GridButton.dart';
+import 'package:app_asc/src/widgets/QuangCaoWidget.dart';
+import 'package:app_asc/src/widgets/SlideImageThongBao.dart';
+import 'package:app_asc/src/widgets/TopStack.dart';
 import 'package:app_asc/src/widgets/card_stack.dart';
-import 'package:app_asc/src/widgets/slide_title.dart';
 import 'package:flutter/material.dart';
 
 class HomeFragment extends StatelessWidget {
@@ -60,87 +62,9 @@ class HomeFragment extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.only(top: 25),
-                          child: GridView.builder(
-                            shrinkWrap: true,
-                            padding: EdgeInsets.only(
-                              top: 0,
-                              bottom: 0,
-                              left: 15,
-                              right: 15,
-                            ),
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: buttons.length,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              childAspectRatio:
-                                  MediaQuery.of(context).size.width /
-                                      MediaQuery.of(context).size.height /
-                                      .55,
-                              crossAxisCount: 4,
-                              crossAxisSpacing: 2,
-                              mainAxisSpacing: 2,
-                            ),
-                            itemBuilder: (context, index) => InkWell(
-                              splashColor: Colors.amber,
-                              onTap: () {
-                                print('Card tapped.');
-                              },
-                              child: Container(
-                                child: Center(
-                                  child: Container(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(16),
-                                              color: buttons[index].color),
-                                          padding: EdgeInsets.all(6),
-                                          child: Icon(
-                                            buttons[index].icon,
-                                            color: Colors.white,
-                                            size: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                12,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(top: 10),
-                                          child: Text(
-                                            buttons[index].name,
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * .22,
-                          child: PageView.builder(
-                            controller: pageController,
-                            itemBuilder: (context, index) {
-                              print('index:$index');
-                              if (index <= 2) {
-                                pageController
-                                    .jumpToPage(index + pages.length - 1);
-                              }
-                              return SlideTitle(
-                                imagePath: pages[index % pages.length],
-                              );
-                            },
-                          ),
-                        ),
+                        GridButton(buttons: buttons),
+                        SlideImageThongBao(
+                            pageController: pageController, pages: pages),
                       ],
                     ),
                   ),
@@ -148,67 +72,8 @@ class HomeFragment extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            height: MediaQuery.of(context).size.height * .07,
-            child: Card(
-              elevation: 8,
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Container(
-                width: MediaQuery.of(context).size.width * .90,
-                padding: EdgeInsets.all(5),
-                height: 60,
-                child: Text(
-                  'Quảng cáo nè',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          )
+          QuangCaoWidget()
         ],
-      ),
-    );
-  }
-}
-
-class TopStack extends StatelessWidget {
-  const TopStack({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 50),
-      alignment: Alignment.topLeft,
-      height: MediaQuery.of(context).size.height * .16,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.elliptical(30, 8),
-          bottomRight: Radius.elliptical(30, 8),
-        ),
-        color: Colors.blueAccent,
-      ),
-      child: Container(
-        padding: EdgeInsets.only(left: 10, right: 10),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Text(
-                'Xin chào, Đoàn Phi Hổ',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Icon(
-              Icons.notifications_none,
-              color: Colors.white,
-            )
-          ],
-        ),
       ),
     );
   }
