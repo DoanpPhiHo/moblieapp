@@ -15,7 +15,7 @@ class CardStack extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Container(
-        width: MediaQuery.of(context).size.height * .90,
+        width: MediaQuery.of(context).size.width * .90,
         height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -25,7 +25,6 @@ class CardStack extends StatelessWidget {
               icon: Icons.calendar_today,
             ),
             Container(
-              height: 100,
               width: 1,
               color: Colors.black26,
             ),

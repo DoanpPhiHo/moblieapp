@@ -25,125 +25,144 @@ class HomeFragment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: Column(children: <Widget>[
-        Stack(
-          children: <Widget>[
-            TopStack(),
-            Container(
-              padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * .11,
-                left: 40,
-                right: 40,
+      child: Column(
+        children: <Widget>[
+          Stack(
+            children: <Widget>[
+              TopStack(),
+              Container(
+                padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * .06,
+                  left: 20,
+                  right: 20,
+                ),
+                child: CardStack(),
               ),
-              child: CardStack(),
-            ),
-          ],
-        ),
-        Expanded(
-          child: SingleChildScrollView(
+            ],
+          ),
+          Expanded(
             child: Container(
-              height: MediaQuery.of(context).size.height * .80,
-              child: Column(children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                    bottom: 10,
-                    left: 10,
-                    right: 10,
-                  ),
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
-                    itemCount: buttons.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 1.1,
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 2,
-                      mainAxisSpacing: 2,
-                    ),
-                    itemBuilder: (context, index) => InkWell(
-                      splashColor: Colors.amber,
-                      onTap: () {
-                        print('Card tapped.');
-                      },
-                      child: Container(
-                        height: 10,
-                        color: Color(0xDA3633),
-                        child: Center(
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: buttons[index].color),
-                                  padding: EdgeInsets.all(5),
-                                  child: Icon(
-                                    buttons[index].icon,
-                                    color: Colors.white,
-                                    size: 40,
+              child: LayoutBuilder(
+                builder: (context, view) => SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(minHeight: view.maxHeight),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Container(
+                          height: MediaQuery.of(context).size.height * .5,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: 10,
+                              right: 10,
+                            ),
+                            child: GridView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: buttons.length,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                childAspectRatio:
+                                    MediaQuery.of(context).size.width /
+                                        MediaQuery.of(context).size.height /
+                                        .8,
+                                crossAxisCount: 4,
+                                crossAxisSpacing: 2,
+                                mainAxisSpacing: 2,
+                              ),
+                              itemBuilder: (context, index) => InkWell(
+                                splashColor: Colors.amber,
+                                onTap: () {
+                                  print('Card tapped.');
+                                },
+                                child: Container(
+                                  child: Center(
+                                    child: Container(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: buttons[index].color),
+                                            padding: EdgeInsets.all(5),
+                                            child: Icon(
+                                              buttons[index].icon,
+                                              color: Colors.white,
+                                              size: 40,
+                                            ),
+                                          ),
+                                          Text(
+                                            buttons[index].name,
+                                            textAlign: TextAlign.center,
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                Text(
-                                  buttons[index].name,
-                                  textAlign: TextAlign.center,
-                                )
-                              ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * .15,
+                          child: PageView(
+                            allowImplicitScrolling: true,
+                            controller: PageController(
+                              viewportFraction: 0.8,
+                            ),
+                            children: <Widget>[
+                              SlideTitle(
+                                imagePath: 'assets/images/images.jpg',
+                              ),
+                              SlideTitle(
+                                imagePath: 'assets/images/images.jpg',
+                              ),
+                              SlideTitle(
+                                imagePath: 'assets/images/images.jpg',
+                              ),
+                              SlideTitle(
+                                imagePath: 'assets/images/images.jpg',
+                              ),
+                              SlideTitle(
+                                imagePath: 'assets/images/images.jpg',
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 130,
-                  child: PageView(
-                    controller: PageController(viewportFraction: 0.8),
-                    children: <Widget>[
-                      SlideTitle(
-                        imagePath: 'assets/images/images.jpg',
-                      ),
-                      SlideTitle(
-                        imagePath: 'assets/images/images.jpg',
-                      ),
-                      SlideTitle(
-                        imagePath: 'assets/images/images.jpg',
-                      ),
-                      SlideTitle(
-                        imagePath: 'assets/images/images.jpg',
-                      ),
-                      SlideTitle(
-                        imagePath: 'assets/images/images.jpg',
-                      ),
-                    ],
-                  ),
-                )
-              ]),
-            ),
-          ),
-        ),
-        Container(
-          height: MediaQuery.of(context).size.height * .07,
-          child: Card(
-            elevation: 8,
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Container(
-              width: MediaQuery.of(context).size.height * .90,
-              padding: EdgeInsets.all(5),
-              height: 60,
-              child: Text(
-                'Quảng cáo nè',
-                textAlign: TextAlign.center,
               ),
             ),
           ),
-        )
-      ]),
+          Container(
+            height: MediaQuery.of(context).size.height * .07,
+            child: Card(
+              elevation: 8,
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Container(
+                width: MediaQuery.of(context).size.width * .90,
+                padding: EdgeInsets.all(5),
+                height: 60,
+                child: Text(
+                  'Quảng cáo nè',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -156,10 +175,9 @@ class TopStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20.0),
-      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .06),
+      padding: EdgeInsets.only(top: 20),
       alignment: Alignment.topLeft,
-      height: MediaQuery.of(context).size.height * .15,
+      height: MediaQuery.of(context).size.height * .1,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.elliptical(30, 8),
@@ -172,12 +190,13 @@ class TopStack extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Expanded(
-                child: Text(
-              'Xin chào, Đoàn Phi Hổ',
-              style: TextStyle(
-                color: Colors.white,
+              child: Text(
+                'Xin chào, Đoàn Phi Hổ',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
-            )),
+            ),
             Icon(
               Icons.notifications_none,
               color: Colors.white,
