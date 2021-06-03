@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ThongBaoKhongCoNhacNho extends StatelessWidget {
-  const ThongBaoKhongCoNhacNho({
-    Key key,
-  }) : super(key: key);
+class ThongBaoKhongCoData extends StatelessWidget {
+  const ThongBaoKhongCoData({Key key, @required this.text}) : super(key: key);
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class ThongBaoKhongCoNhacNho extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(5),
               child: Text(
-                'Chưa có thông báo',
+                text,
                 style: TextStyle(
                   color: Colors.black,
                 ),
