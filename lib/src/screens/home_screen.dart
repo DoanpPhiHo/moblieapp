@@ -1,6 +1,7 @@
-import 'package:app_asc/src/fragments/AttendaceFragment.dart';
-import 'package:app_asc/src/fragments/home_fragments.dart';
-import 'package:app_asc/src/fragments/remind_fragments.dart';
+import 'package:app_asc/src/fragments/home/AttendaceFragment.dart';
+import 'package:app_asc/src/fragments/home/FeedbackFragment.dart';
+import 'package:app_asc/src/fragments/home/HomeFragment.dart';
+import 'package:app_asc/src/fragments/home/remind_fragments.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -65,6 +66,7 @@ class HomeScreen extends StatelessWidget {
             HomeFragment(),
             RemindFragment(),
             AttendaceFragment(),
+            FeedbackFragment(),
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
@@ -79,7 +81,6 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(Icons.access_time_rounded),
           ],
         ),
       ),
