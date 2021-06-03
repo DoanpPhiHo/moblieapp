@@ -15,8 +15,8 @@ class CardStack extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Container(
-        width: MediaQuery.of(context).size.width * .90,
-        height: 60,
+        width: MediaQuery.of(context).size.width * .9,
+        height: 80,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

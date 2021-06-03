@@ -4,6 +4,13 @@ import 'package:app_asc/src/widgets/slide_title.dart';
 import 'package:flutter/material.dart';
 
 class HomeFragment extends StatelessWidget {
+  final List<String> pages = [
+    'assets/images/images.jpg',
+    'assets/images/images.jpg',
+    'assets/images/images.jpg',
+    'assets/images/images.jpg',
+    'assets/images/images.jpg'
+  ];
   final List<ButtonModel> buttons = [
     new ButtonModel('Nhắc Nhở', Icons.notifications_rounded, Colors.red),
     new ButtonModel('Phiếu thu', Icons.star_outline_rounded, Colors.green),
@@ -32,7 +39,7 @@ class HomeFragment extends StatelessWidget {
               TopStack(),
               Container(
                 padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * .06,
+                  top: MediaQuery.of(context).size.height * .105,
                   left: 20,
                   right: 20,
                 ),
@@ -51,56 +58,62 @@ class HomeFragment extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Container(
-                          height: MediaQuery.of(context).size.height * .5,
-                          child: Padding(
+                          padding: EdgeInsets.only(top: 25),
+                          child: GridView.builder(
+                            shrinkWrap: true,
                             padding: EdgeInsets.only(
-                              left: 10,
-                              right: 10,
+                              top: 0,
+                              bottom: 0,
+                              left: 15,
+                              right: 15,
                             ),
-                            child: GridView.builder(
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: buttons.length,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                childAspectRatio:
-                                    MediaQuery.of(context).size.width /
-                                        MediaQuery.of(context).size.height /
-                                        .8,
-                                crossAxisCount: 4,
-                                crossAxisSpacing: 2,
-                                mainAxisSpacing: 2,
-                              ),
-                              itemBuilder: (context, index) => InkWell(
-                                splashColor: Colors.amber,
-                                onTap: () {
-                                  print('Card tapped.');
-                                },
-                                child: Container(
-                                  child: Center(
-                                    child: Container(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                color: buttons[index].color),
-                                            padding: EdgeInsets.all(5),
-                                            child: Icon(
-                                              buttons[index].icon,
-                                              color: Colors.white,
-                                              size: 40,
-                                            ),
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: buttons.length,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              childAspectRatio:
+                                  MediaQuery.of(context).size.width /
+                                      MediaQuery.of(context).size.height /
+                                      .55,
+                              crossAxisCount: 4,
+                              crossAxisSpacing: 2,
+                              mainAxisSpacing: 2,
+                            ),
+                            itemBuilder: (context, index) => InkWell(
+                              splashColor: Colors.amber,
+                              onTap: () {
+                                print('Card tapped.');
+                              },
+                              child: Container(
+                                child: Center(
+                                  child: Container(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(16),
+                                              color: buttons[index].color),
+                                          padding: EdgeInsets.all(6),
+                                          child: Icon(
+                                            buttons[index].icon,
+                                            color: Colors.white,
+                                            size: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                12,
                                           ),
-                                          Text(
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(top: 10),
+                                          child: Text(
                                             buttons[index].name,
                                             textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      ),
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -110,29 +123,14 @@ class HomeFragment extends StatelessWidget {
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * .15,
-                          child: PageView(
-                            allowImplicitScrolling: true,
+                          height: MediaQuery.of(context).size.height * .22,
+                          child: PageView.builder(
+                            // itemCount: pages.length,
                             controller: PageController(
-                              viewportFraction: 0.8,
+                                viewportFraction: 0.8, initialPage: 300),
+                            itemBuilder: (context, index) => SlideTitle(
+                              imagePath: pages[index % pages.length],
                             ),
-                            children: <Widget>[
-                              SlideTitle(
-                                imagePath: 'assets/images/images.jpg',
-                              ),
-                              SlideTitle(
-                                imagePath: 'assets/images/images.jpg',
-                              ),
-                              SlideTitle(
-                                imagePath: 'assets/images/images.jpg',
-                              ),
-                              SlideTitle(
-                                imagePath: 'assets/images/images.jpg',
-                              ),
-                              SlideTitle(
-                                imagePath: 'assets/images/images.jpg',
-                              ),
-                            ],
                           ),
                         )
                       ],
@@ -175,9 +173,9 @@ class TopStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 50),
       alignment: Alignment.topLeft,
-      height: MediaQuery.of(context).size.height * .1,
+      height: MediaQuery.of(context).size.height * .16,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.elliptical(30, 8),

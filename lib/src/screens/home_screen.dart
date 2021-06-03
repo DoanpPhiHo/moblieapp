@@ -8,6 +8,9 @@ class HomeScreen extends StatelessWidget {
       length: 5,
       child: Scaffold(
         bottomNavigationBar: TabBar(
+          indicatorWeight: 0.1,
+          indicatorColor: Colors.blue,
+          labelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
           unselectedLabelColor: Colors.black38,
           labelPadding: EdgeInsets.only(top: 0, bottom: 0, left: 0, right: 0),
           indicatorPadding: EdgeInsets.all(0),
@@ -15,7 +18,7 @@ class HomeScreen extends StatelessWidget {
             Tab(
               iconMargin: EdgeInsets.only(bottom: 0),
               icon: Icon(
-                Icons.accessibility_new_outlined,
+                Icons.home,
                 color: Colors.black,
               ),
               text: 'Trang chủ',
