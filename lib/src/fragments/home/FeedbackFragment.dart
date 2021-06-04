@@ -1,3 +1,5 @@
+import 'package:app_asc/src/widgets/ButtonCus.dart';
+import 'package:app_asc/src/widgets/TextFiledCus.dart';
 import 'package:flutter/material.dart';
 
 class FeedbackFragment extends StatelessWidget {
@@ -26,71 +28,41 @@ class FeedbackFragment extends StatelessWidget {
                 child: Text(
                     'Mọi thông tin đóng góp ý kiến phản hồi vui lòng nhập vào các thông tin bên dưới Tìm hiểu thêm'),
               ),
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      'Tên trường(*)',
-                      style: TextStyle(fontSize: 12, color: Colors.black26),
-                    ),
-                    TextField()
-                  ],
-                ),
+              TextFiledCus(
+                hintText: 'Hệ thống ASC Training',
+                required: true,
+                title: 'Tên trường',
+                enable: false,
               ),
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      'Tên trường(*)',
-                      style: TextStyle(fontSize: 12, color: Colors.black26),
-                    ),
-                    TextField()
-                  ],
-                ),
+              TextFiledCus(
+                hintText: 'Đoàn Phi Hổ',
+                required: true,
+                title: 'Họ tên',
+                enable: false,
               ),
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      'Tên trường(*)',
-                      style: TextStyle(fontSize: 12, color: Colors.black26),
-                    ),
-                    TextField()
-                  ],
-                ),
+              TextFiledCus(
+                hintText: 'Nhập số điện thoại',
+                required: false,
+                title: 'Số điện thoại',
+                textInputAction: TextInputAction.next,
               ),
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      'Tên trường(*)',
-                      style: TextStyle(fontSize: 12, color: Colors.black26),
-                    ),
-                    TextField()
-                  ],
-                ),
+              TextFiledCus(
+                hintText: 'Nhập email',
+                required: true,
+                title: 'Email',
+                textInputAction: TextInputAction.next,
               ),
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      'Tên trường(*)',
-                      style: TextStyle(fontSize: 12, color: Colors.black26),
-                    ),
-                    TextField()
-                  ],
-                ),
+              TextFiledCus(
+                hintText: 'Nhập nội dung',
+                required: true,
+                title: 'Nội dung',
+                textInputAction: TextInputAction.done,
+                maxLine: 10,
+                minLine: 3,
               ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 50,
-                child: FlatButton(
-                  onPressed: () {},
-                  child: Text('Gửi'),
-                  clipBehavior: Clip.antiAlias,
-                  autofocus: true,
-                  color: Colors.blue,
-                ),
+              ButtonCus(
+                text: 'Gửi',
+                autofocus: true,
               )
             ],
           ),
